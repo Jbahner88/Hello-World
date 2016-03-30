@@ -1,0 +1,108 @@
+{
+"ts67_wheels_f": {
+    "information":{
+        "authors":"Zappymouse",
+        "name":"5 Spoke Front Wheels",
+    }
+    "slotType" : "ts67_wheels_f",
+    "flexbodies": [
+         ["mesh", "[group]:", "nonFlexMaterials"],
+         //wheels
+         ["ts67_wheel_fr", ["wheel_fr","wheelhub_fr"], [], {"pos":{"x":0, "y":0, "z":0}, "rot":{"x":0, "y":0, "z":0}, "scale":{"x":1, "y":1, "z":1}}],
+         ["ts67_wheel_fl", ["wheel_fl","wheelhub_fl"], [], {"pos":{"x":0, "y":0, "z":0}, "rot":{"x":0, "y":0, "z":0}, "scale":{"x":1, "y":1, "z":1}}],
+    ],
+    "nodes": [
+         ["id", "posX", "posY", "posZ"],
+         //front wheel
+         {"nodeWeight":4.85},
+         {"selfCollision":true},
+         {"collision":true}
+         {"frictionCoef":0.5},
+         {"nodeMaterial":"|NM_METAL"},
+         {"group":"wheelhub_fl"},
+         ["fwll", 0.90114, -1.36762, 0.35535],
+         ["fwl", 0.69365, -1.36762, 0.35535],
+         {"group":"wheelhub_fr"},
+         ["fwrr", -0.90114, -1.36762, 0.35535],
+         ["fwr", -0.69365, -1.36762, 0.35535],
+         {"group":""},
+    ],
+    "beams": [
+          ["id1:", "id2:"],
+          {"beamType":"|NORMAL", "beamLongBound":1.0, "beamShortBound":1.0},
+          {"beamSpring":139680,"beamDamp":162,"beamDeform":56000,"beamStrength":"FLT_MAX"},
+          //front wheel
+          ["fwrr","fwr"],
+          ["fwll","fwl"],
+
+          {"beamPrecompression":1, "beamType":"|NORMAL", "beamLongBound":1.0, "beamShortBound":1.0},
+    ],
+    "pressureWheels": [
+        ["name","group","node1:","node2:","nodeS","nodeArm:","wheelDir"],
+        {"enableTireReinfBeams":true},{"disableMeshBreaking":true},
+        {"enableTireSideReinfBeams":false},
+
+        //general settings
+        {"radius":0.355},
+        {"hubRadius":0.25},
+        {"wheelOffset":-0.03},
+        {"hubWidth":0.255},
+        {"tireWidth":0.265},
+        {"numRays":16},
+
+        //hub options
+        {"hubTreadBeamSpring":388080, "hubTreadBeamDamp":4.3},
+        {"hubPeripheryBeamSpring":888080, "hubPeripheryBeamDamp":4.3},
+        {"hubSideBeamSpring":692080, "hubSideBeamDamp":4.3},
+        {"hubNodeWeight":0.35},
+        {"hubNodeMaterial":"|NM_METAL"},
+        {"hubFrictionCoef":0.5},
+
+        //tire options
+        {"wheelSideBeamSpring":155800,"wheelSideBeamDamp":25.8},
+        {"wheelSideBeamSpringExpansion":404000,"wheelSideBeamDampExpansion":25.8},
+        {"wheelSideTransitionZone":0.1,"wheelSideBeamPrecompression":0.98},
+
+        {"wheelReinfBeamSpring":58800,"wheelReinfBeamDamp":38.7},
+        {"wheelReinfBeamSpringExpansion":22800,"wheelReinfBeamDampExpansion":38.7},
+        {"wheelReinfTransitionZone":0.0,"wheelReinfBeamPrecompression":0.98},
+
+        {"wheelTreadBeamSpring":60480,"wheelTreadBeamDamp":38.7},
+        {"wheelTreadBeamPrecompression":0.97},
+
+        {"wheelPeripheryBeamSpring":76080,"wheelPeripheryBeamDamp":21.5},
+        {"wheelPeripheryBeamPrecompression":0.97},
+
+        //general tire values
+        {"nodeWeight":0.25},
+        {"nodeMaterial":"|NM_RUBBER"},
+        {"frictionCoef":1.78},
+        {"triangleCollision":false},
+        {"pressurePSI":27},
+        {"maxPressurePSI":1500},
+        {"dragCoef":10},
+
+        //deform values
+        {"wheelSideBeamDeform":34400,"wheelSideBeamStrength":28000},
+        {"wheelSideReinfBeamDeform":34400,"wheelSideReinfBeamStrength":28000},
+        {"wheelReinfBeamDeform":34400,"wheelReinfBeamStrength":28000},
+        {"wheelTreadBeamDeform":32400,"wheelTreadBeamStrength":42000},
+        {"wheelPeripheryBeamDeform":32400,"wheelPeripheryBeamStrength":42000},
+        {"hubBeamDeform":696000, "hubBeamStrength":77000},
+
+        //front
+        {"selfCollision":false}
+        {"collision":true}
+        {"enableHubcaps":false},
+        {"axleBeams":["axle_fr"]}
+        ["fr", "wheel_fr", "fwr", "fwrr", 9999,  "tror", -1,{"speedo" : false, "nodeCoupling:":"frostedbuttsr","steerAxisUp:":"hfr1","steerAxisDown:":"hfr2"}],
+        {"axleBeams":["axle_fr"]}
+        ["fl", "wheel_fl", "fwl", "fwll", 9999,  "trol", 1,{"nodeCoupling:":"frostedbuttsl","steerAxisUp:":"hfl1","steerAxisDown:":"hfl2"}],
+        {"axleBeams":[]},{"disableMeshBreaking":false}
+        {"propulsed":0},
+    ],
+    "triangles": [
+            ["id1:","id2:","id3:"],
+    ],
+}
+}

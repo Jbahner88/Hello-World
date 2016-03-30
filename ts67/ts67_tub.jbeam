@@ -1,0 +1,174 @@
+{
+"ts67_tub": {    
+    "information":{
+        "authors":"Zappymouse",
+        "name":"Tub",
+    }
+    "slotType" : "ts67_tub",
+    "slots": [
+        ["type", "default", "description"]
+        ["ts67_steer","ts67_steer", "Steering Wheel"],
+    ],
+    "scalebeamSpring":1,
+    "scalebeamDamp":1,
+    "scalebeamDeform":1,
+    "scalebeamStrength":1,
+    "scalenodeWeight":1,
+    "scaledragCoef":1.3,
+    "flexbodies": [
+         ["mesh", "[group]:", "nonFlexMaterials"],
+         ["ts67_tub", ["ts67_tub"]],
+    ],
+         "nodes": [
+         ["id", "posX", "posY", "posZ"],
+		 {"group":"ts67_tub"},
+         {"selfCollision":true},
+         {"collision":true}
+         {"frictionCoef":2.3},
+         {"nodeMaterial":"|NM_PLASTIC"},
+         {"nodeWeight":2.5},
+		 ["tl0",0.197,-1.007,0.502],
+["tl1",0.197,-1.007,0.576],
+["tr2",-0.197,-1.007,0.502],
+["tr3",-0.197,-1.007,0.576],
+["t4",0.0,-0.944,0.712],
+["tl5",0.292,-0.615,0.24],
+["tr6",-0.292,-0.615,0.24],
+["tl7",0.322,-0.194,0.214],
+["tl8",0.322,-0.194,0.598],
+["tr9",-0.322,-0.194,0.214],
+["tr10",-0.322,-0.194,0.598],
+["tl11",0.324,0.655,0.214],
+["tl12",0.324,0.655,0.597],
+["t13",0.0,0.655,0.139],
+["tr14",-0.324,0.655,0.214],
+["tr15",-0.324,0.655,0.597],
+    ],
+    "beams": [
+          ["id1:", "id2:"],
+          {"beamType":"|NORMAL", "beamPrecompression":1, "beamLongBound":1.0, "beamShortBound":1.0},
+          {"optional":true},
+          
+          {"beamSpring":2701000,"beamDamp":156},
+          {"beamDeform":175500,"beamStrength":295000},
+		  
+          {"beamType":"|NORMAL", "beamPrecompression":1, "beamLongBound":1.0, "beamShortBound":1.0},
+		["tl0","tl1"],
+["tr2","tr3"],
+["tl1","t4"],
+["t4","tr3"],
+["tl0","tr3"],
+["tl1","tr2"],
+["tl0","tr2"],
+["tl0","t4"],
+["t4","tr2"],
+["tl7","tl5"],
+["tl11","tl7"],
+["tr9","tr6"],
+["tr14","tr9"],
+["tl5","tr6"],
+["tl7","tr9"],
+["tl11","t13"],
+["t13","tr14"],
+["tl11","tl12"],
+["tr14","tr15"],
+["tr9","tr10"],
+["tl7","tl8"],
+["tr6","tr2"],
+["tl5","tl0"],
+["tl12","tl8"],
+["tr15","tr10"],
+["t13","tr15"],
+["tl12","t13"],
+["tl11","tr14"],
+["tl12","tr14"],
+["tl11","tr15"],
+["tl12","tr15"],
+["tl11","tl8"],
+["tl7","tl12"],
+["tr14","tr10"],
+["tr9","tr15"],
+["tl11","tr9"],
+["tl7","tr14"],
+["t13","tr9"],
+["tl7","t13"],
+["tl8","tl1"],
+["tr10","tr3"],
+["tr6","tr10"],
+["tr9","tr2"],
+["tl7","tl0"],
+["tl5","tl8"],
+["tl5","tr9"],
+["tl7","tr6"],
+["t4","tr10"],
+["tl8","t4"],
+["tl5","tl1"],
+["tr6","tr3"],
+["tl1","tr10"],
+["tl8","tr3"],
+["tl11","tr6"],
+["tl5","tr14"],
+["tl5","tl12"],
+["tl11","tl1"],
+["tr14","tr3"],
+["tr6","tr15"],
+["tl0","tr6"],
+["tl5","tr2"],
+["tl0","tr9"],
+["tl7","tr2"],
+//attach direct
+{"breakGroup":"tub0"},
+{"beamDeform":105500,"beamStrength":1965000},
+//bottom
+["n39","t13"],
+["nl40","tl11"],
+["nr41","tr14"],
+["nl35","tl17"],
+["nr36","tr9"],
+["nl26","tl5"],
+["nr27","tr6"],
+//top
+["nr45","tr15"],
+["nl44","tl12"],
+["nl32","tl8"],
+["nr33","tr10"],
+["n24","t4"],
+//constrain
+//bottom
+["t13","nl40"]
+["t13","nr41"]
+["tl7","n34"]
+["tr9","n34"]
+["tl5","n25"]
+["tr6","n25"]
+["tl11","n34"]
+["tr14","n34"]
+//top
+["t4","nr31"]
+["t4","nl30"]
+{"breakGroup":""},
+    ]
+    "triangles": [
+            ["id1:","id2:","id3:"],
+            {"groundModel":"metal"},
+            {"dragCoef":10},
+            {"group":""},
+    ],
+}
+"ts67_steer": {
+    "information":{
+        "authors":"Zappymouse",
+        "name":"Steering Wheel",
+    }
+    "slotType" : "ts67_steer", 
+    /*"flexbodies": [
+         ["mesh", "[group]:", "nonFlexMaterials"],
+         ["ts67_steeringwheel", ["ts67_steer"]],
+    ],	*/
+    "props": [
+        ["func"      , "mesh"              , "idRef:", "idX:", "idY:"            , "baseRotation"        , "rotation"                 , "translation"        , "min", "max", "offset", "multiplier"]
+        //steering wheel
+        ["steering"  , "ts67_steeringwheel"      , "tl7","tr9","tr6",  {"x":109.3, "y":180, "z":0}, {"x":0, "y":1, "z":0}    , {"x":0, "y":0, "z":0}, -1000, 1000, 0, 1],
+     ],
+}
+}

@@ -1,0 +1,245 @@
+{
+"ts67_suspension_r": {
+    "information":{
+        "authors":"Zappymouse",
+        "name":"Independent Rear Suspension",
+    }
+    "slotType" : "ts67_suspension_r",
+    "slots": [
+        ["type", "default", "description"]
+        ["ts67_coilover_r","ts67_coilover_r", "Coilovers"],
+        ["ts67_brake_r","ts67_brake_r", "Rear Brakes"],
+        ["ts67_wheels_r","ts67_wheels_r", "Rear Wheels"],
+        ["ts67_arb_r","ts67_arb_r", "Rear Anti-Roll Bar"],
+    ],
+    "flexbodies": [
+         ["mesh", "[group]:", "nonFlexMaterials"],
+         ["ts67_arm_low_r", ["ts67_arm_low_r","ts67_lowermounts_r","trxmountlow"]],
+         ["ts67_arm_up_r", ["ts67_arm_up_r","ts67_uppermounts_r","ts67_shocktop_r"]],
+         ["ts67_cvshaft", ["ts67_transaxle","ts67_arm_up_r","ts67_arm_low_r"]],
+         ["ts67_hub_r", ["ts67_arm_up_r","ts67_arm_low_r"]],
+    ],
+    "nodes": [
+         ["id", "posX", "posY", "posZ"],
+         {"nodeWeight":6.2},
+         {"group":"ts67_arm_low_r"},
+         //rear wheel hub
+         {"selfCollision":false},
+         {"collision":true}
+         {"frictionCoef":0.5},
+         {"nodeMaterial":"|NM_METAL"},
+		 {"group":"ts67_arm_low_r"},
+		 ["hrl2", 0.68435, 1.74411, 0.24685],
+		 ["hrl3", 0.68435, 1.46724, 0.24685],
+		 
+		 ["hrr2", -0.68435, 1.74411, 0.24685],
+		 ["hrr3", -0.68435, 1.46724, 0.24685],
+		 
+		 {"group":"ts67_arm_up_r"},
+		["hrr1", -0.69101, 1.46789, 0.60997],
+		 ["hrl1", 0.69101, 1.46789, 0.60997],
+		{"group":""},
+		 //cv
+		 ["lcvo", 0.64610, 1.61692, 0.42677],
+		 ["rcvo", -0.64610, 1.61692, 0.42677],
+		 
+		 //shockbottom
+		{"group":"ts67_shockbottom_r"},
+		 ["sbrl", 0.62958, 1.44853, 0.30211],
+		 ["sbrr", -0.62958, 1.44853, 0.30211],
+    ],
+
+    "beams": [
+          ["id1:", "id2:"],
+          {"beamType":"|NORMAL", "beamLongBound":1.0, "beamShortBound":1.0},
+          //--REAR RUNNING GEAR--
+          {"beamSpring":4550800,"beamDamp":49,"beamDeform":10824000,"beamStrength":"FLT_MAX"},
+          //rear hub
+		   ["hrl1", "hrl2"],
+           ["hrl2", "hrl3"],
+           ["hrl3", "hrl1"],
+           ["hrl2", "lcvo"],
+           ["lcvo", "hrl1"],
+           ["hrl3", "lcvo"],
+		   
+		   ["hrr1", "hrr2"],
+           ["hrr2", "hrr3"],
+           ["hrr3", "hrr1"],
+           ["hrr2", "rcvo"],
+           ["rcvo", "hrr1"],
+           ["hrr3", "rcvo"],
+
+			//cv2trx
+			["lcvo", "trxl1"],
+           ["rcvo", "trxr1"],
+
+
+			//shockbutt
+		   ["sbrl", "hrl1"],
+           ["sbrl", "hrl2"],
+           ["sbrl", "hrl3"],
+           ["sbrl", "lcvo"],
+		   
+		   ["sbrr", "hrr1"],
+           ["sbrr", "hrr2"],
+           ["sbrr", "hrr3"],
+           ["sbrr", "rcvo"],
+		   
+			//["sbrl", "sbrr"],
+
+		   
+			//arm low
+			 ["hrl3", "rm3"],
+			//camber
+			{"beamPrecompression":1.016},
+           ["trxl0", "hrl2"],
+           ["hrl3", "trxl0"],
+			//["rm3", "trxl0"],
+			{"beamPrecompression":1},
+			
+           ["hrr3", "rm4"],
+		   //camber
+		   {"beamPrecompression":1.016},
+		   ["trxl0", "hrr2"],
+           ["hrr3", "trxr0"],
+           //["rm4", "trxr0"],
+		   {"beamPrecompression":1},
+
+			//arm hi
+           ["hrl1", "shocktoprl"],
+           ["hrr1", "shocktoprr"],
+           ["hrl1", "rm1"],
+           ["hrr1", "rm2"],
+
+			//hub2wheel left
+           ["hrl1", "rwl"],
+           ["hrl2", "rwl"],
+           ["hrl3", "rwl"],
+           ["hrl3", "rwll"],
+           ["hrl1", "rwll"],
+           ["hrl2", "rwll"],
+
+			//right
+           ["hrr2", "rwr"],
+           ["hrr3", "rwr"],
+           ["hrr1", "rwr"],
+           ["hrr1", "rwrr"],
+           ["hrr3", "rwrr"],
+           ["hrr2", "rwrr"],
+
+			//wheel anti-shudder
+			["rm4", "rwrr"],
+			["rwll", "rm3"],
+
+		  {"group":""},
+		  ],
+    "triangles": [
+            ["id1:","id2:","id3:"],
+    ],
+}
+"ts67_arb_r": {
+    "information":{
+        "authors":"Zappymouse",
+        "name":"Rear Anti Roll Bar",
+    }
+    "slotType" : "ts67_arb_r",
+    "flexbodies": [
+         ["mesh", "[group]:", "nonFlexMaterials"],
+		 //"ts67_arb",
+         ["ts67_arb", ["ts67_arm_low_r","ts67_arb","ts67_transaxle"]],
+    ],
+    "nodes": [
+         ["id", "posX", "posY", "posZ"],
+         {"collision":false}
+         {"selfCollision":false},
+         {"frictionCoef":0.5},
+         {"nodeMaterial":"|NM_METAL"},
+         {"group":""},
+         {"nodeWeight":2.0},
+		["arbr",0.0,1.623,0.462],
+		["arbrl",0.649,1.884,0.361],
+		["arbrr",-0.649,1.884,0.361],
+    ],
+    "beams": [
+          ["id1:", "id2:"],
+          {"beamType":"|NORMAL", "beamLongBound":1.0, "beamShortBound":1.0},
+          {"beamPrecompression":1, "beamType":"|NORMAL", "beamLongBound":1, "beamShortBound":1},
+          {"beamSpring":741000,"beamDamp":100},
+          {"beamDeform":112000,"beamStrength":125000},
+		  //frame
+			["arbrr","hrr3"],
+			["arbrr","hrr2"],
+			["arbrl","hrl3"],
+			["arbrl","hrl2"],
+
+			["arbrl","arbrr"],
+
+			["arbrl","nl42"],
+			["arbrr","nr43"],
+
+			//why
+			["arbrl", "rwll"],
+			["arbrr", "rwrr"],
+
+			//squishy beams
+			{"beamSpring":3251000,"beamDamp":10},
+			["arbr","arbrr"],
+			["arbr","arbrl"],
+
+			["arbr", "nl42"],
+           ["arbr", "nr43"],
+
+          {"beamPrecompression":1, "beamType":"|NORMAL", "beamLongBound":1.0, "beamShortBound":1.0},
+    ],
+    "triangles": [
+            ["id1:","id2:","id3:"],
+    ],
+}
+"ts67_brake_r": {
+    "information":{
+        "authors":"Zappymouse",
+        "name":"Rear Brakes",
+    }
+    "slotType" : "ts67_brake_r",
+    "flexbodies": [
+         ["mesh", "[group]:", "nonFlexMaterials"],
+		 ],
+    "pressureWheels": [
+            ["name","group","node1:","node2:","nodeS","nodeArm:","wheelDir"],
+            {"brakeTorque":710},
+            {"brakeInputSplit":0.52},
+            {"brakeSplitCoef":0.3},
+            {"parkingTorque":1500},
+            {"brakeSpring":30},
+    ],
+}
+"ts67_coilover_r": {
+    "information":{
+        "authors":"Zappymouse",
+        "name":"Rear Coilovers",
+    }
+    "slotType" : "ts67_coilover_r",
+    "flexbodies": [
+         ["mesh", "[group]:", "nonFlexMaterials"],
+         ["ts67_coilover_r", ["ts67_coilover","ts67_shockbottom_r","ts67_shocktop_r"]],
+    ],
+    "nodes": [
+         ["id", "posX", "posY", "posZ"],
+    ],
+	//DEFAULT PRECOMP = 1.075
+    "beams": [
+          ["id1:", "id2:"],
+          {"beamPrecompression":1.275, "beamType":"|BOUNDED", "beamLongBound":0.8, "beamShortBound":0.85},
+          {"beamSpring":23800,"beamDeform":190000,"beamStrength":88000},
+          {"beamLimitSpring":1001000,"beamLimitDamp":5000},
+          {"beamDamp":3000},
+			//shock
+			["sbrl", "shocktoprl"],
+           ["sbrr", "shocktoprr"],
+          {"beamPrecompression":1, "beamType":"|NORMAL", "beamLongBound":1.0, "beamShortBound":1.0},
+    ],
+    "triangles": [
+            ["id1:","id2:","id3:"],
+    ],
+}
+}

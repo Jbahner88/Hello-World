@@ -1,0 +1,305 @@
+{
+"ts67_suspension_f": {
+    "information":{
+        "authors":"Zappymouse",
+        "name":"Not Pushrod Suspension",
+    }
+    "slotType" : "ts67_suspension_f",
+    "slots": [
+        ["type", "default", "description"]
+        ["ts67_coilover_f","ts67_coilover_f", "Coilovers"],
+        ["ts67_brake_f","ts67_brake_f", "Front Brakes"],
+        ["ts67_wheels_f","ts67_wheels_f", "Front Wheels"],
+        ["ts67_arb_f","ts67_arb_f", "Front Anti-Roll Bar"],
+        ["ts67_steering","ts67_steering", "Reverse Ackermann Steering"],
+    ],
+    "flexbodies": [
+         ["mesh", "[group]:", "nonFlexMaterials"],
+         ["ts67_arm_low_f", ["ts67_arm_low_f","ts67_lowermounts_f"]],
+         ["ts67_arm_up_f", ["ts67_arm_up_f","ts67_uppermounts_f",]],
+         ["ts67_hub_fr", ["ts67_arm_low_f","ts67_arm_up_f","ts67_tierod_end"]],
+         ["ts67_hub_fl", ["ts67_arm_low_f","ts67_arm_up_f","ts67_tierod_end"]],
+    ],
+    "nodes": [
+         ["id", "posX", "posY", "posZ"],
+         {"nodeWeight":6.2},
+         //front wheel hub
+         {"selfCollision":false},
+         {"collision":true}
+         {"frictionCoef":0.5},
+         {"nodeMaterial":"|NM_METAL"},
+		 {"group":"ts67_arm_low_f"},
+		 //["hfl2", 0.61281, -1.29315, 0.21670],
+		 //["hfr2", -0.61281, -1.29315, 0.21670],
+		 ["hfl2", 0.61281, -1.29315, 0.21670],
+		 ["hfr2", -0.61281, -1.29315, 0.21670],
+		 {"group":"ts67_arm_up_f"},
+		 ["hfl1", 0.61252, -1.25315, 0.47007],
+		 ["hfr1", -0.61252, -1.25315, 0.47007],
+		 {"group":"ts67_tierod_end"},
+		 //["trol", 0.61716, -1.52144, 0.43750],
+		 //["tror", -0.61716, -1.52144, 0.43750],
+		 ["trol", 0.61716, -1.52144, 0.43750],
+		 ["tror", -0.61716, -1.52144, 0.43750],
+		 {"group":"arbf"},
+		 ["hfl3", 0.65781, -1.36202, 0.21670],
+		 ["hfr3", -0.65781, -1.36202, 0.21670],
+		{"group":""},
+		["frostedbuttsl", 0.79109, -1.36762, 0.35535],
+		["frostedbuttsr", -0.79109, -1.36762, 0.35535],
+    ],
+
+    "beams": [
+          ["id1:", "id2:"],
+          {"beamType":"|NORMAL", "beamLongBound":1.0, "beamShortBound":1.0},
+          {"beamSpring":9550800,"beamDamp":85,"beamDeform":10824000,"beamStrength":"FLT_MAX"},
+          //front hub
+           ["hfl1", "hfl2"],
+           ["hfl2", "hfl3"],
+           ["hfl3", "trol"],
+           ["trol", "hfl1"],
+           ["hfl1", "hfl3"],
+           ["trol", "hfl2"],
+		   
+		   ["hfr1", "tror"],
+           ["tror", "hfr3"],
+           ["hfr3", "hfr2"],
+           ["hfr2", "hfr1"],
+           ["hfr1", "hfr3"],
+           ["tror", "hfr2"],
+
+           ["frostedbuttsl", "hfl1"],
+           ["frostedbuttsl", "trol"],
+           ["frostedbuttsl", "hfl3"],
+           ["frostedbuttsl", "hfl2"],
+
+		   
+		    ["frostedbuttsr", "hfr1"],
+           ["frostedbuttsr", "hfr2"],
+           ["frostedbuttsr", "hfr3"],
+           ["frostedbuttsr", "tror"],
+
+
+			//arm low
+			//camber
+			{"beamPrecompression":1.012},
+           ["hfl2", "fml4"],
+           ["hfl2", "fml3"],
+
+           ["hfr2", "fmr3"],
+           ["hfr2", "fmr4"],
+			{"beamPrecompression":1},
+		   
+			//arm hi
+           ["hfr1", "fmr1"],
+           ["hfr1", "fmr2"],
+
+           ["hfl1", "fml1"],
+           ["hfl1", "fml2"],
+		   
+		   {"beamSpring":8750800,"beamDamp":385,"beamDeform":90824000},
+
+			//hub2wheel left
+           ["hfr1", "fwrr"],
+           ["fwrr", "tror"],
+           ["fwrr", "hfr2"],
+           ["fwrr", "hfr3"],
+
+           ["fwr", "hfr1"],
+           ["fwr", "tror"],
+           ["fwr", "hfr2"],
+           ["fwr", "hfr3"],
+
+			//right
+           ["fwll", "hfl1"],
+           ["fwll", "trol"],
+           ["fwll", "hfl3"],
+           ["fwll", "hfl2"],
+           ["fwl", "hfl1"],
+           ["fwl", "trol"],
+           ["fwl", "hfl3"],
+           ["fwl", "hfl2"],
+		   {"beamSpring":152000,"beamDamp":185,"beamDeform":90824000},
+			//wheel anti-shudder
+			["rm4", "fwrr"],
+			["fwll", "rm3"],
+		  ],
+    "triangles": [
+            ["id1:","id2:","id3:"],
+    ],
+}
+"ts67_arb_f": {
+    "information":{
+        "authors":"Zappymouse",
+        "name":"Front Anti Roll Bar",
+    }
+    "slotType" : "ts67_arb_f",
+    "flexbodies": [
+         ["mesh", "[group]:", "nonFlexMaterials"],
+         ["", ["ts67_arm_low_r"]],
+    ],
+    "nodes": [
+         ["id", "posX", "posY", "posZ"],
+         {"collision":false}
+         {"selfCollision":false},
+         {"frictionCoef":0.5},
+         {"nodeMaterial":"|NM_METAL"},
+         {"group":""},
+         {"nodeWeight":2.0},
+         //front anti-roll
+		//["arbfr",-0.621,-1.386,0.299],
+		//["arbfl",0.621,-1.386,0.299],
+		["arbfr",-0.55781,-1.296,0.299],
+		["arbfl",0.55781,-1.296,0.299],
+		["arbf",0.0,-1.189,0.587],
+    ],
+    "beams": [
+          ["id1:", "id2:"],
+		//BNEcolor:220,220,220
+          {"beamType":"|NORMAL", "beamLongBound":1.0, "beamShortBound":1.0},
+          {"beamPrecompression":1, "beamType":"|NORMAL", "beamLongBound":1, "beamShortBound":1},
+          {"beamSpring":5001000,"beamDamp":100},
+          {"beamDeform":112000,"beamStrength":712000},
+			//["arbfr","hfr3"],
+			["arbfr","hfr2"],
+			//["arbfl","hfl3"],
+			["arbfl","hfl2"],
+
+			["arbfl","arbfr"],
+
+			["arbfl","nl26"],
+			["arbfr","nr27"],
+			
+			["arbfl", "fwl"],
+			["arbfr", "fwr"],
+			
+			{"beamSpring":51000,"beamDamp":20},
+			["arbf","arbfr"],
+			["arbf","arbfl"],
+
+			["arbf", "nl26"],
+            ["arbf", "nr27"],
+		//BNEcolor:0,0,0
+          {"beamPrecompression":1, "beamType":"|NORMAL", "beamLongBound":1.0, "beamShortBound":1.0},
+    ],
+    "triangles": [
+            ["id1:","id2:","id3:"],
+    ],
+}
+"ts67_brake_f": {
+    "information":{
+        "authors":"Zappymouse",
+        "name":"Front Brakes",
+    }
+    "slotType" : "ts67_brake_f",
+    "flexbodies": [
+         ["mesh", "[group]:", "nonFlexMaterials"],
+		 ],
+    "pressureWheels": [
+            ["name","group","node1:","node2:","nodeS","nodeArm:","wheelDir"],
+            {"brakeTorque":1050},
+            {"brakeInputSplit":0.52},
+            {"brakeSplitCoef":0.3},
+			{"parkingTorque":0},
+            {"brakeSpring":30},
+    ],
+}
+"ts67_steering": {
+    "information":{
+        "authors":"Zappymouse",
+        "name":"Steering",
+    }
+    "slotType" : "ts67_steering",
+    "flexbodies": [
+         ["mesh", "[group]:", "nonFlexMaterials"],
+         ["ts67_tierod", ["ts67_rack","ts67_tierod_end","ts67_arm_up_f","ts67_arm_low_f"]],
+    ],
+    "rails": {
+        "steeringrack":{
+            "links:":["trr", "trl"], "broken:":[], "looped":false, "capped":true
+        }
+    },
+    "slidenodes": [
+        ["id:", "railName", "attached", "fixToRail", "tolerance", "spring", "strength", "capStrength"],
+        ["rckl", "steeringrack", true, true, 0.0, 12001000, 210000, 210000],
+        ["rckr", "steeringrack", true, true, 0.0, 12001000, 210000, 210000],
+    ],
+	
+    "nodes": [
+         ["id", "posX", "posY", "posZ"],
+         //--steering rod--
+         {"selfCollision":false},
+         {"collision":true}
+         {"nodeMaterial":"|NM_METAL"},
+         {"frictionCoef":0.5},
+         {"group":"ts67_tierod_f"},
+         {"nodeWeight":4.4},
+         ["trl",0.21,-1.48,0.358],
+		 ["trr",-0.21,-1.48,0.358],
+         {"group":""},
+    ],
+    "beams": [
+            ["id1:","id2:"],
+            {"beamPrecompression":1.0, "beamType":"|NORMAL", "beamLongBound":1, "beamShortBound":1},
+            {"beamSpring":5501000,"beamDamp":1000,"beamDeform":204400,"beamStrength":48250},
+            ["trr","trl"],
+            //toe in
+            {"beamSpring":5751000,"beamDamp":1200},
+            {"beamPrecompression":0.98},
+            ["tror","trr"],
+            ["trol","trl"],
+            {"beamPrecompression":1.0, "beamType":"|BOUNDED", "beamLongBound":1.0, "beamShortBound":1.0},
+            {"beamSpring":0,"beamDeform":31360,"beamStrength":74760},
+            {"beamDamp":50},
+            {"beamPrecompression":1.0, "beamType":"|NORMAL", "beamLongBound":1, "beamShortBound":1},
+    ]
+    "hydros": [
+            ["id1:","id2:"],
+            {"beamPrecompression":1.0, "beamType":"|NORMAL", "beamLongBound":1, "beamShortBound":1},
+            {"beamSpring":2001000,"beamDamp":10,"beamDeform":204400,"beamStrength":378250},
+            ["trr","rckr",{"factor":0.95,"steeringWheelLock":270,"lockDegrees":300}],
+            ["trl","rckl",{"factor":-0.95,"steeringWheelLock":270,"lockDegrees":300}],
+            {"beamPrecompression":1.0, "beamType":"|NORMAL", "beamLongBound":1, "beamShortBound":1},
+    ]
+    "input": {
+        "FFBcoef":1.8,
+    },
+}
+"ts67_coilover_f": {
+    "information":{
+        "authors":"Zappymouse",
+        "name":"Front Coilovers",
+    }
+    "slotType" : "ts67_coilover_f",
+    "flexbodies": [
+         ["mesh", "[group]:", "nonFlexMaterials"],
+         ["", ["ts67_coilover_f","ts67_shockbottom_f","ts67_shocktop_f"]],
+    ],
+    "nodes": [
+         ["id", "posX", "posY", "posZ"],
+    ],
+	//DEFAULT PRECOMP = 1.075
+    "beams": [
+          ["id1:", "id2:"],
+          {"beamPrecompression":1.025, "beamType":"|BOUNDED", "beamLongBound":0.2, "beamShortBound":0.9},
+          {"beamSpring":86000,"beamDeform":95000,"beamStrength":"FLT_MAX"},
+          {"beamLimitSpring":1035200,"beamLimitDamp":0},
+          {"beamDamp":300},
+			//shock
+           ["hfr2", "fmr2"],
+           ["hfr2", "fmr1"],
+
+           ["hfl2", "fml1"],
+           ["hfl2", "fml2"],
+		   
+		   ["hfr2", "nr22"],
+
+           ["hfl2", "nl21"],
+
+          {"beamPrecompression":1, "beamType":"|NORMAL", "beamLongBound":1.0, "beamShortBound":1.0},
+    ],
+    "triangles": [
+            ["id1:","id2:","id3:"],
+    ],
+}
+}

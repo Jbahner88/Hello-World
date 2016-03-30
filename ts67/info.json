@@ -1,0 +1,17 @@
+{
+	"Name":"TS67",
+	"Brand":"Segaiolo Automobili",
+  "Author":"Zappymouse",
+  "Country":"Italy",
+  "Body Style":"Open Wheel",
+  "Description":"A late 60s Formula 1 racer.",
+	"Type":"Car",
+	"Years":{"min":1966, "max":1967},
+	"Derby Class":"no",
+  //"default_pc":"default",
+	"default_color":"Rosso Corsa",
+	"colors":{
+		"Rosso Corsa": "0.87 0.21 0.09 1",
+		"Chrome": "0.5 0.5 0.5 1.0"
+	}
+}
